@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matemáticas 2</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="js/forms.js">
+</head>
+<body>
+    <div class="main">
+        <h1>
+            Aritmética EZ
+        </h1>
+        N1: <input id="num1" type="number">
+        <br><br>
+        N2: <input id="num2" type="number">
+        <br><br>
+        <button type="button" onclick="SumarDosNumeros()" style="cursor: pointer; margin-left: 50px;" >
+            Calcular
+        </button>
+        <h1>Resultado</h1>
+        <h2>
+            Suma:
+            <p id="ResultadoSuma"></p>
+        </h2>
+        <h2>
+            Resta:
+            <p id="ResultadoResta"></p>
+        </h2>
+        <h2>
+            Multiplicación:
+            <p id="ResultadoMulti"></p>
+        </h2>
+        <h2>
+            División:
+            <p id="ResultadoDivi"></p>
+        </h2>
+        
+        <script>
+            function SumarDosNumeros(){
+                var num1, num2, Suma, resta, multi, divi
+                num1 = document.getElementById("num1").value;
+                num2 = document.getElementById("num2").value;
+                suma = parseFloat(num1) + parseFloat(num2)                 
+                resta = parseFloat(num1) - parseFloat(num2)                 
+                multi = parseFloat(num1) * parseFloat(num2)
+                if (num2 != 0){
+                    divi = parseFloat(num1) / parseFloat(num2)                 
+                }else{
+                    divi = "No se permite dividir por cero"
+                }      
+                document.getElementById("ResultadoSuma").innerHTML = suma;
+                document.getElementById("ResultadoResta").innerHTML = resta;
+                document.getElementById("ResultadoMulti").innerHTML = multi;
+                document.getElementById("ResultadoDivi").innerHTML = divi;
+            }
+        </script>   
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matemáticas 2</title>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    
+    <header >Fraciones, m.c.m y M.C.D</header>
+    <div class="main">
+        <div class="numbers">
+            
+            <h1>Máximo común divisor</h1>
+            <p>Ingrese el número 1 </p><input id="num1" type="number">
+            <p>Ingrese el número 2 </p><input id="num2" type="number">
+    
+            <button onclick="max()">Calcular</button>
+    
+            <p>Resultado<p id="resultadomax"></p></p> 
+    
+        </div>
+        <div class="numbers2">
+            <h1>Mínimo común múltiplo</h1>
+            <p>Ingrese el número 1 </p><input id="num11" type="number">
+            <p>Ingrese el número 2 </p><input id="num22" type="number">
+    
+            <button onclick="min()">Calcular</button>
+    
+            <p>Resultado<p id="resultadomin"></p></p> 
+        </div>
+        <div class="fracciones">
+            <div class="datosFraccion">
+                <h1>Fracciones</h1>
+            </div>
+            <div class="datosFraccion">
+                <h2>Fracción 1</h2>
+                
+                <p>Ingrese el numerador</p> <input id="numerador" type="number">
+                <p>Ingrese el denominador</p> <input id="denominador" type="number">
+
+                <h2>Fracción 2</h2>
+
+                <p>Ingrese el numerador</p> <input id="numerador2" type="number">
+                <p>Ingrese el denominador</p> <input id="denominador2" type="number">
+                <br><br>
+                <button onclick="fraccionMain();">Hecho</button>
+            
+            
+            </div>
+            
+        </div>
+        <div class="fraccion">
+            <h1>Fracción: </h1>
+            <button onclick="minA();">Calcular</button>
+            <div class="fraccionMain">
+                <p>
+                    <p id="numeR"></p>
+                    <p>y</p>
+                    <p id="denoR"></p>
+                    
+                    
+                </p>
+                
+            </div>
+
+            <div class="fraccionMain">
+                <p>
+                    <p id="numeR2"></p>
+                    <p> </p>
+                    <p id="denoR2"></p>
+                </p>
+            </div>
+            <p>Suma: <p id="suma"></p> </p>
+            <p>Resta: <p id="resta"></p> </p>
+            <p>División: <p id="divi"></p> </p>
+            <p>Multiplicación:  <p id="multi"></p> </p>
+            
+           
+        </div>
+    </div>
+    <script>
+        function fraccionMain (){
+            var nume = document.getElementById("numerador").value;
+            var deno = document.getElementById("denominador").value;
+            var nume2 = document.getElementById("numerador2").value;
+            var deno2 = document.getElementById("denominador2").value;
+            
+
+            document.getElementById("numeR").innerHTML = nume;
+            document.getElementById("denoR").innerHTML = deno;
+            document.getElementById("numeR2").innerHTML = nume2;
+            document.getElementById("denoR2").innerHTML = deno2;
+            
+
+        }
+    </script>
+    
+    <script>
+        function minA(){
+           var a = document.getElementById("denominador").value;
+           var b = document.getElementById("denominador2").value;
+           var c = document.getElementById("numerador2").value;
+           var d = document.getElementById("numerador").value;
+           const maximoComunDivisor = (a, b) => {
+               let temporal; 
+               while (b !== 0) {
+                   temporal = b;
+                   b = a % b;
+                   a = temporal;
+               }
+               return a;
+           };
+
+           const minimoComunMultiplo = (a, b) => {
+               return (a * b) / maximoComunDivisor(a, b);
+           };
+           var mcm = minimoComunMultiplo(a, b);
+           if (a==b) {
+                // var numResta = (d-c), denResta = a, numSuma = (d+c), denSuma = a
+                var resultResta = (d-c) + "/" + a
+                var resultSuma = (d+c) + "/" + a
+
+           }else{
+                var numResta = (((mcm/a)*d)-((mcm/b)*c)), denResta = mcm, numSuma = (((mcm/a)*d)+((mcm/b)*c)), denSuma = mcm
+                var resultResta = (((mcm/a)*d)-((mcm/b)*c)) + "/" + mcm
+                var resultSuma = (((mcm/a)*d)+((mcm/b)*c)) + "/" + mcm
+
+           }
+           var resultMulti = (c*d) + "/" + (a*b)
+           var resultDivi = (d*b) + "/" + (a*c)
+           document.getElementById("suma").innerHTML = resultSuma;
+           document.getElementById("resta").innerHTML = resultResta;
+           document.getElementById("divi").innerHTML = resultDivi;
+           document.getElementById("multi").innerHTML = resultMulti;
+       }
+   </script>
+
+    <script>
+        function max(){
+            var a = document.getElementById("num1").value;
+            var b = document.getElementById("num2").value;
+        const maximoComunDivisor = (a, b) => {
+        let temporal; 
+        while (b !== 0) {
+            temporal = b;
+            b = a % b;
+            a = temporal;
+        }
+        document.getElementById("resultadomax").innerHTML = a;
+        };
+
+        const minimoComunMultiplo = (a, b) => {
+           return (a * b) / maximoComunDivisor(a, b);
+        };
+        const mcm = minimoComunMultiplo(a, b);
+        }
+    </script>
+    <script>
+         function min(){
+            var a = document.getElementById("num11").value;
+            var b = document.getElementById("num22").value;
+            const maximoComunDivisor = (a, b) => {
+                let temporal; 
+                while (b !== 0) {
+                    temporal = b;
+                    b = a % b;
+                    a = temporal;
+                }
+                return a;
+            };
+
+            const minimoComunMultiplo = (a, b) => {
+                return (a * b) / maximoComunDivisor(a, b);
+            };
+            var mcm = minimoComunMultiplo(a, b);
+            document.getElementById("resultadomin").innerHTML = mcm;
+        }
+    </script>
+
+</body>
+</html>

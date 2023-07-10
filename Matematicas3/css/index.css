@@ -1,0 +1,11 @@
+.main{
+    display: grid;
+    justify-content: center;
+    background-color: blueviolet;
+}
+.p{
+    color: cadetblue;
+}
+.h2{
+    color: burlywood;
+}
